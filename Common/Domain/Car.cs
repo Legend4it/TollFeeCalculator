@@ -9,6 +9,16 @@ namespace TollFeeCalculator
 {
     public class Car : Vehicle
     {
+        private readonly string _regnr;
+        public Car(string regnr)
+        {
+            _regnr = regnr;
+        }
+        public string GetRegNr()
+        {
+            return _regnr;
+        }
+
         public String GetVehicleType()
         {
             return "Car";
