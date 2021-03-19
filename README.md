@@ -14,3 +14,7 @@ KRAV
 •	Ett fordon betalar endast en tullavgift (den högsta) per timme
 •	Vissa fordonstyper är befriade ifrån tullavgifter
 •	Helger, helgdagar samt hela juli är tullfria
+
+
+Project Dependencies:
+•	Nager.Date -Version 1.28.2
