@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TollFeeCalculator;
 
 namespace Common
 {
     public static class TollEnum
     {
-
+        public static bool IsInTollFreeVehicle(IVehicle vehicle)
+        {
+            return Enum.TryParse<TollEnum.TollFreeVehicles>(vehicle.GetVehicleType(), out _);
+        }
         public enum TollFreeVehicles
         {
             Motorbike = 0,

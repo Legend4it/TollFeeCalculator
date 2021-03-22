@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TollFeeCalculator
 {
-    public class Car : Vehicle
+    public class Car : IVehicle
     {
         private readonly string _regnr;
         public Car(string regnr)
@@ -26,7 +26,7 @@ namespace TollFeeCalculator
 
         public bool IsTollFreeVehicle()
         {
-            return Enum.TryParse<TollEnum.TollFreeVehicles>(GetVehicleType(), out _);
+            return TollEnum.IsInTollFreeVehicle(this);
         }
     }
 }
