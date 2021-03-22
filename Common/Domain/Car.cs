@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +8,22 @@ using System.Threading.Tasks;
 
 namespace TollFeeCalculator
 {
-    public class Car : IVehicle
+    public class Car : Vehicle
     {
-        private readonly string _regnr;
         public Car(string regnr)
         {
+            _type = this.GetType().Name;
             _regnr = regnr;
         }
-        public string GetRegNr()
+
+        public override String GetVehicleType()
         {
-            return _regnr;
+            return base.GetVehicleType();
         }
 
-        public String GetVehicleType()
+        public override bool IsTollFreeVehicle()
         {
-            return this.GetType().Name;
-        }
-
-        public bool IsTollFreeVehicle()
-        {
-            return TollEnum.IsInTollFreeVehicle(this);
+            return base.IsTollFreeVehicle();
         }
     }
 }

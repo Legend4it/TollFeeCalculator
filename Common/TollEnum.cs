@@ -11,6 +11,10 @@ namespace Common
         {
             return Enum.TryParse<TollEnum.TollFreeVehicles>(vehicle.GetVehicleType(), out _);
         }
+        public static bool IsInTollFreeVehicle(string type)
+        {
+            return Enum.TryParse<TollEnum.TollFreeVehicles>(type, out _);
+        }
         public enum TollFreeVehicles
         {
             Motorbike = 0,
