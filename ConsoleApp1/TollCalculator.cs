@@ -17,12 +17,16 @@ public class TollCalculator
 
     public int GetTollFee(Vehicle vehicle, DateTime[] dates)
     {
+        if (IsTollFreeVehicle(vehicle)) return 0;
+
         DateTime intervalStart = dates[0];
         int totalFee = 0;
+
+
         foreach (DateTime date in dates)
         {
-            int nextFee = GetTollFee(date, vehicle);
-            int tempFee = GetTollFee(intervalStart, vehicle);
+            int nextFee = GetTollFee(date);
+            int tempFee = GetTollFee(intervalStart);
 
             long diffInMillies = date.Millisecond - intervalStart.Millisecond;
             long minutes = diffInMillies/1000/60;
@@ -46,19 +50,11 @@ public class TollCalculator
     {
         if (vehicle == null) return false;
         return vehicle.IsTollFreeVehicle();
-
-        //String vehicleType = vehicle.GetVehicleType();
-        //return vehicleType.Equals(TollEnum.TollFreeVehicles.Motorbike.ToString()) ||
-        //       vehicleType.Equals(TollEnum.TollFreeVehicles.Tractor.ToString()) ||
-        //       vehicleType.Equals(TollEnum.TollFreeVehicles.Emergency.ToString()) ||
-        //       vehicleType.Equals(TollEnum.TollFreeVehicles.Diplomat.ToString()) ||
-        //       vehicleType.Equals(TollEnum.TollFreeVehicles.Foreign.ToString()) ||
-        //       vehicleType.Equals(TollEnum.TollFreeVehicles.Military.ToString());
     }
 
-    public int GetTollFee(DateTime date, Vehicle vehicle)
+    public int GetTollFee(DateTime date)
     {
-        if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
+        if (IsTollFreeDate(date)) return 0;
 
         int hour = date.Hour;
         int minute = date.Minute;
@@ -80,26 +76,6 @@ public class TollCalculator
         if (DateSystem.IsWeekend(date, CountryCode.SE)) return true;
         if (DateSystem.IsPublicHoliday(date, CountryCode.SE)) return true;
         return false;
-
-        //int year = date.Year;
-        //int month = date.Month;
-        //int day = date.Day;
-        //if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday) return true;
-        //if (year == 2013)
-        //{
-        //    if (month == 1 && day == 1 ||
-        //        month == 3 && (day == 28 || day == 29) ||
-        //        month == 4 && (day == 1 || day == 30) ||
-        //        month == 5 && (day == 1 || day == 8 || day == 9) ||
-        //        month == 6 && (day == 5 || day == 6 || day == 21) ||
-        //        month == 7 ||
-        //        month == 11 && day == 1 ||
-        //        month == 12 && (day == 24 || day == 25 || day == 26 || day == 31))
-        //    {
-        //        return true;
-        //    }
-        //}
-        //return false;
     }
 
 }
