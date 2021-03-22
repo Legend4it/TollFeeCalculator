@@ -59,6 +59,15 @@ namespace NUnitTestProject
             Assert.IsTrue(actual == 0);
         }
 
+        [Test]
+        public void GetVehicleTypeIsSuccess()
+        {
+            var vehicle = new Car("ABC123");
+            var actual = vehicle.GetVehicleType();
+            var expected = "Car";
+            Assert.AreEqual(expected, actual);
+        }
+
         private List<DateTime> GetDates()
         {
             return new List<DateTime>() {
