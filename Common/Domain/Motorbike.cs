@@ -22,7 +22,7 @@ namespace TollFeeCalculator
 
         public string GetVehicleType()
         {
-            return "Motorbike";
+            return this.GetType().Name;
         }
 
         public bool IsTollFreeVehicle()
