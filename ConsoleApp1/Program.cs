@@ -17,7 +17,7 @@ namespace ConsoleApp1
             Console.ReadKey();
 
         }
-        public static void GetFee(Vehicle vehicle, List<DateTime> dates)
+        public static void GetFee(IVehicle vehicle, List<DateTime> dates)
         {
             var tc = new TollCalculator();
             Console.WriteLine($"Total Fee:{tc.GetTollFee(vehicle, dates.ToArray())}, Vehicle Typ:{vehicle.GetVehicleType()}");
